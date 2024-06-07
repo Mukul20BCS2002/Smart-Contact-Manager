@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>User Dashboard - Smart Contact Manager</title>
+</head>
+<body>
+	<section
+		class="bannerr d-flex justify-content-center align-items-center">
+		<div class="text-center">
+			<h1 class="font-weight-bold">Smart Contact Manager</h1>
+			<p>Start adding your contacts in very smarter way.we provide
+				very efficient and smarter way of handling contacts.</p>
+				<a th:href="@{/user/add_contact}" class="btn bg-primary btn-lg text-white">Start Adding Contact</a>
+				<!-- <button class="btn bg-primary btn-lg text-white">Get Start</button> -->
+		</div>
+	</section>
+</body>
+</html>

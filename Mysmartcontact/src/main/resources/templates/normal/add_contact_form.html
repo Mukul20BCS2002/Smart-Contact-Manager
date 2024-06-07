@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>User Dash board - Smart Contact Manager</title>
+</head>
+<body>
+	<section>
+		<div class="card me-3">
+			<div class="card-body">
+				<div th:if="${message}" th:classappend="${message.type}"
+					class="alert" role="alert">
+					<p th:text="${message.content}"></p>
+				</div>
+				<h1 class="text-center">Add Contact</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							<form th:action="@{/user/contactAddAction}" method="post"
+								th:object="${contact}" enctype="multipart/form-data"
+								class="mt-2">
+
+								<!-- First Name field -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text me-2">
+											<i class="fa-solid fa-user form-control"></i>
+										</div>
+									</div>
+									<input type="text" name="fname" id="firstName"
+										placeholder="Enter First Name Here" class="form-control"
+										th:classappend="${#fields.hasErrors('fname')? 'is-invalid':''}"
+										th:value="${contact.fname}" />
+
+									<div class="invalid-feedback"
+										th:each="e:${#fields.errors('fname')}" th:text="${e}"></div>
+
+								</div>
+
+								<!-- Second Name field -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text me-2">
+											<i class="fa-solid fa-plus form-control"></i>
+										</div>
+									</div>
+									<input type="text" name="lname" id="lastName"
+										placeholder="Enter Last Name Here" class="form-control"
+										th:classappend="${#fields.hasErrors('lname')? 'is-invalid':''}"
+										th:value="${contact.lname}" />
+									<div class="invalid-feedback"
+										th:each="e:${#fields.errors('lname')}" th:text="${e}"></div>
+								</div>
+
+								<!-- Phone field -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text me-2">
+											<i class="fa-solid fa-phone form-control"></i>
+										</div>
+									</div>
+									<input type="text" name="phone" id="phone"
+										placeholder="Enter Contact Here" class="form-control"
+										th:classappend="${#fields.hasErrors('lname')? 'is-invalid':''}"
+										th:value="${contact.phone}" />
+
+									<div class="invalid-feedback"
+										th:each="e:${#fields.errors('phone')}" th:text="${e}"></div>
+								</div>
+
+								<!-- Email field -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text me-2">
+											<i class="fa-solid fa-envelope form-control"></i>
+										</div>
+									</div>
+									<input type="email" name="email" id="email"
+										placeholder="Enter Email Here" class="form-control"
+										th:classappend="${#fields.hasErrors('email')? 'is-invalid':''}"
+										th:value="${contact.email}" />
+
+									<div class="invalid-feedback"
+										th:each="e:${#fields.errors('email')}" th:text="${e}"></div>
+								</div>
+
+								<!-- Work field -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text me-2">
+											<i class="fa-solid fa-briefcase form-control"></i>
+										</div>
+									</div>
+									<input type="text" name="work" id="work"
+										placeholder="Enter Work Here" class="form-control"
+										th:classappend="${#fields.hasErrors('email')? 'is-invalid':''}"
+										th:value="${contact.work}" />
+
+									<div class="invalid-feedback"
+										th:each="e:${#fields.errors('work')}" th:text="${e}"></div>
+								</div>
+
+								<!--  description -->
+								<div class="form-group mt-3">
+
+									<textarea name="description" id="mytextarea" rows="10"
+										class="form-control" placeholder="Enter About Yourself"></textarea>
+
+								</div>
+
+
+								<div class="container text-center pt-3">
+
+									<button type="submit" class="btn bg-primary text-white">Submit</button>
+									<button type="Reset" class="btn btn-warning text-white">Reset</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+</body>
+</html>
